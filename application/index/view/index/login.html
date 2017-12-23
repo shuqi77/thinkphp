@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="__STATIC__/js/jquery-1.12.3.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .btn-radius{
+        border-radius: 100px;
+    }
+    .btn-hover{
+        background-color: rgba(0,0,0,0);
+        border: 1px solid white;
+        color: white;
+    }
+    .btn-hover:hover{
+        background-color: rgba(0,0,0,0);
+        border: 2px solid white;
+        color: white;
+    }
+</style>
+<body>
+    <div class="container-fluid img-responsive center-block" style="background: url(https://image.wjx.cn/images/newimg/register-login/bacg.jpg);background-size:100% 100%;">
+        <div class="row">
+            <div class="container">
+                <div class="row" style="margin-top: 30px">
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <img class="img-responsive center-block" src="https://www.wjx.cn/images/register-login/logo.png" alt="">
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2"></div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 text-left">
+                        <form class="form-horizontal" style="height: 520px;background-color:white;margin-top: 32px;margin-bottom: 80px;border-radius: 20px">
+                           <div class="form-group">
+                               <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                               <div class="col-lg-4 col-md-4 col-sm-4" style="color: orange;">
+                                   <h3>问卷星登录</h3>
+                               </div>
+                               <div class="col-lg-7 col-md-7 col-sm-7"></div>
+                           </div>
+                            <div class="form-group">
+                                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                                <div class="col-lg-10 col-md-10 col-sm-10"><input id="input-name" name="user" type="text" class="form-control input-lg btn-radius input-name" placeholder="用户名/Email/手机"></div>
+                                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                                <div class="col-lg-10 col-md-10 col-sm-10"><input type="password" name="pwd" class="form-control input-lg btn-radius" placeholder="请输入登录密码"></div>
+                                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                                <div class="col-lg-4 col-md-4 col-sm-4"><input type="text" name="code" class="form-control input-lg btn-radius" placeholder="验证码"></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6"><img class="img-responsive center-block" src="{:captcha_src()}" onclick="this.src=this.src+'?'+Math.random()" alt="captcha" /></div>
+                                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                                <div class="col-lg-5 col-md-5 col-sm-5"><input type="checkbox" name="auto" value="1">下次自动登录</div>
+                                <div class="col-lg-5 col-md-5 col-sm-5 text-right"><a href="">忘记用户名/密码？</a></div>
+                                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                                <div class="col-lg-10 col-md-10 col-sm-10">
+                                    <input class="form-control input-lg btn-warning btn-radius" type="button" value="登录">
+                                </div>
+                                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-4 col-md-4 col-sm-4"></div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                                    <h4 style="color: orange">立即注册</h4>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                                <div class="col-lg-10 col-md-10 col-sm-10 text-center" style="border-top: 1px solid #cccccc;margin-bottom: 9px;font-size: 14px">
+                                    <em style="color:#888888;position: relative;top: -11px;font-style: normal;padding: 0 6px;background-color: white">第三方登录</em>
+                                </div>
+                                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                                <div class="col-lg-10 col-md-10 col-sm-10 text-center img-responsive center-block">
+                                    <img id="qqLogin" src="https://image.wjx.cn/images/register-login/qq.png">
+                                </div>
+                                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 text-center">
+                        <button class="btn btn-lg btn-default btn-radius btn-hover">注册</button>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 text-center">
+                        <a href="index.php" class="btn btn-lg btn-default btn-radius btn-hover">返回首页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $('input[value="登录"]').click(function(){
+        var form=$('form').serialize();
+        $.ajax({
+            type:'post',
+            url:'{:url("index/User/doLogin")}',
+            data:form,
+            dataType:'json',
+            success:function(res){
+                console.log(res,typeof(res));
+                if(res.code==1001){
+                    alert(res.msg);
+                }
+                else if(res.code==1002){
+                    alert(res.msg);
+                }
+                else if(res.code==1003){
+                    alert(res.msg);
+                }
+                else{
+                    alert(res.msg);
+                    window.location.href="{:url('index/Index/main')}";
+                }
+            },
+            error:function(res){
+                console.log(res);
+            }
+        });
+    })
+</script>
+</html>

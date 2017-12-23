@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>我的问卷星</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="__STATIC__/js/jquery-1.12.3.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    @media (max-width: 767px){
+        .menu{
+            background-color: #0078c8;
+            color: white;
+            font-size: 16px;
+        }
+        #iframe{
+            width: 100%;
+            height:500px;
+            background-color: white;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    }
+    /* 小屏幕（平板，大于等于 768px） */
+    @media (min-width: 768px) {
+        .menu{
+            height: 58px;
+            line-height: 58px;
+            background-color: #0078c8;
+            color: white;
+            font-size: 16px;
+        }
+        .menu:hover{
+            color: #fff799;
+        }
+        #footer{
+            height: 346px;
+        }
+        #nav{
+            height:58px;
+            line-height: 58px;
+            color: white
+        }
+        #page{
+            height:50px;
+            line-height: 50px;
+        }
+        #iframe{
+            height:500px;
+            width: 100%;
+            background-color: white;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    }
+    .experience{
+        background-color: white;
+        color: deepskyblue;
+        border: 1px solid deepskyblue;
+        border-radius: 10px;
+        margin: 20px;
+    }
+    .experience:hover{
+        background-color: dodgerblue;
+        color: white;
+    }
+    .allTable{
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(51, 51, 51, 0.2);
+    }
+    .allTable:hover{
+        border: 2px solid rgba(48, 166, 245, 1);
+        box-shadow: 0 0 10px rgba(48, 166, 245, 1);
+    }
+    .title{
+        width: 98%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 2px solid white;
+    }
+    .title:hover{
+        width: 98%;
+        border: 2px solid orange;
+    }
+</style>
+<body style="background: #eeeeee; margin: 0; padding: 0;">
+<div id="myQuestion">
+    <div id="nav" style="background-color: #888;" class="nav navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button style="background-color: #ddd" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNav" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="row collapse navbar-collapse" id="myNav">
+                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <button type="button" class="btn btn-warning" v-on:click="complete">完成编辑</button>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <div class="glyphicon glyphicon-eye-open"></div>预览
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">题目随机设置</div>
+                        <div class="col-lg-6 col-md-6 col-sm-6"><input type="checkbox">隐藏系统题号</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" id="page" style="background-color: #0095da;color: white;margin-top: 20px">
+            <div class="col-lg-8 col-md-8 col-sm-8 text-center">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 text-center">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2" style="border-right: 1px dotted white"><span v-on:click="addQuestion" class="glyphicon glyphicon-record" id="select">单选</span></div>
+                            <div class="col-lg-2 col-md-2 col-sm-2" style="border-right: 1px dotted white"><span class="glyphicon glyphicon-check">多选</span></div>
+                            <div class="col-lg-2 col-md-2 col-sm-2" style="border-right: 1px dotted white"><span class="glyphicon glyphicon-edit">填空</span></div>
+                            <div class="col-lg-2 col-md-2 col-sm-2" style="border-right: 1px dotted white"><span class="glyphicon glyphicon-modal-window">矩阵</span></div>
+                            <div class="col-lg-2 col-md-2 col-sm-2" style="border-right: 1px dotted white"><span class="glyphicon glyphicon-paperclip">文件</span></div>
+                            <div class="col-lg-2 col-md-2 col-sm-2" style="border-right: 1px dotted white"><span class="glyphicon glyphicon-star">评分</span></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                        <div class="row">
+                            <div class="col-lg-7 col-md-7 col-sm-7 text-center">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6" style="border-right: 1px dotted white"><span class="glyphicon glyphicon-record">分页</span></div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6" style="border-right: 1px dotted white"><span class="glyphicon glyphicon-check">排序</span></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-sm-5 text-center" style="border-right: 1px dotted white">
+                                <span class="glyphicon glyphicon-edit">段落说明</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4" style="border-right: 1px dotted white"><span class="glyphicon glyphicon-check">多级下拉</span></div>
+                    <div class="col-lg-4 col-md-4 col-sm-4" style="border-right: 1px dotted white"><span class="glyphicon glyphicon-edit">高级题型</span></div>
+                    <div class="col-lg-4 col-md-4 col-sm-4" style="border-right: 1px dotted white"><span class="glyphicon glyphicon-edit">个人信息</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="iframe">
+                <div class="container title">
+                    <div class="row text-center" style="color: #f53d05;margin-top: 30px;font-weight: bold;">
+                        <h3>
+                            {$title}
+                        </h3>
+                    </div>
+                    <div class="row" style="height: 50px;border-bottom: 1px dashed black;margin-bottom: 20px">
+                        <input type="text" placeholder="添加问卷说明">
+                    </div>
+                </div>
+                <div class="container">
+                    <div style="padding: 10px" class="title" v-for="x in question">
+                        <span class='h4'>{{x.showId}}.</span>
+                        <input v-if="x.qname=='请在此输入问题标题'" type="text" class='btn-lg' :placeholder="x.qname">
+                        <input v-if="x.qname!='请在此输入问题标题'" type='text' class='btn-lg' :value="x.qname">
+                        <input style="margin: 10px" type="button" class="btn btn-primary" v-on:click="add(x)" :count="x.count+1" value="增加选项">
+                        <input style="margin: 10px" type="button" class="btn btn-warning" v-on:click="query(x.showId,x.qid)" value="完成编辑">
+                        <input type="button" class="btn btn-danger" v-on:click="delQuestion(x.showId,x.qid)" value="删除题目">
+                        <ul style="list-style: none">
+                            <li style="margin: 5px" v-for="y in x.option">
+                                <span>{{y.code}}:</span>
+                                <input type="text" :value="y.oname">
+                                <input type="button" class="btn btn-danger del" v-on:click="delOption(x,y.showOid)" value="删除">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="show text-center">
+                        <button type="button" class="btn btn-default">批量添加题目</button>
+                    </div>
+                </div>
+            </div>
+            <!--<iframe class="table-bordered embed-responsive-item" src="index.php?type=login&a=test" id="iframe"></iframe>-->
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var vue=new Vue({
+        el:'#myQuestion',
+        data:{
+            question:[],
+            num:0,
+            tid:0,
+            maxOid:0,
+            saveNum:0//已经存入数据库的题目数量
+        },
+        created:function(){
+            this.init();
+        },
+        methods:{
+            init:function(){
+                var _this=this;
+                $.ajax({
+                    type:'get',
+                    url:'{:url("index/Question/getQuestion")}',
+                    data:'',
+                    dataType:'json',
+                    success:function(res){
+                        console.log(res);
+                        _this.num=res[1];
+                        _this.saveNum=res[0][res[0].length-1].qid;
+                        _this.tid=res[3];
+                        for(var i=0;i<res[0].length;i++){
+                            var arr=[];
+                            var newArr=[];
+                            for(var m=0;m<res[2].length;m++){
+                                if(res[2][m].qid==res[0][i].qid){
+                                    arr.push(res[2][m]);
+                                }
+                            }
+                            for(var j=0;j<arr.length;j++){
+                                var str = String.fromCharCode(64 + j+1);
+                                newArr.push({showOid:j+1,oid:arr[j].oid,oname:arr[j].oname,qid:arr[j].qid,code:str});
+                                if(j==arr.length-1){
+                                    _this.maxOid=parseInt(arr[j].oid);
+                                }
+                            }
+                            _this.question.push({showId:i+1,qid:res[0][i].qid,qname:res[0][i].qname,tid:res[0][i].tid,count:res[0][i].count,option:newArr});
+                        }
+                        console.log(_this.question);
+                    },
+                    error:function(res){
+                        console.log(res);
+                    }
+                });
+            },
+            addQuestion:function(){
+                this.num=this.question.length+1;
+                this.question.push({showId:this.num,qid:this.num,qname:'请在此输入问题标题',tid:this.tid,count:2,option:[{showOid:1,oid:this.maxOid+1,qid:this.num,code:'A'},{showOid:2,oid:this.maxOid+2,qid:this.num,code:'B'}]});
+                this.maxOid+=2;
+            },
+            delQuestion:function(showId,qid){
+                if(confirm('确定要删除吗？')){
+                    console.log(this.saveNum,showId,qid)
+                    if(this.saveNum>=showId){
+                        $.ajax({
+                            type:'post',
+                            url:'{:url("index/Question/delQuestion")}',
+                            data:{qid:qid},
+                            dataType:'text',
+                            success:function(res){
+                                console.log(res);
+                                if(res!=0){
+                                    alert('删除成功');
+                                    window.location.reload();
+                                }
+                                else{
+                                    alert('删除失败');
+                                }
+                            },
+                            error:function(res){
+                                console.log(res);
+                            }
+                        })
+                    }
+                    else{
+                        this.question.splice(showId-1,1);
+                        var arr=[];
+                        for(var i=0;i<this.question.length;i++){
+                            arr.push({showId:i+1,qid:i+1,qname:this.question[i].qname,tid:this.question[i].tid,count:this.question[i].count,option:this.question[i].option})
+                        }
+                        this.question=arr;
+                    }
+
+                }
+            },
+            add:function(x){
+                this.maxOid++;
+                var option= x.option;
+                var str = String.fromCharCode(64 + parseInt(x.count)+1);
+                option.push({showOid:parseInt(x.count)+1,oid: this.maxOid,qid: x.qid,code:str});
+                var question={showId:x.showId,qid: x.qid,qname: x.qname,tid:x.tid,count:parseInt(x.count)+1,option: option};
+                var showId=parseInt(x.showId)-1;
+                this.question.splice(showId,1,question);
+            },
+            query:function(showId,qid){
+                var str = "";
+                var flag=true;
+                //for循环查询已有控件的输入值
+                var arr=[];
+                var obj=[];
+                var question=$('.title').eq(showId).children().eq(1).val();
+                var liArr=$('.title').eq(showId).children().eq(5).children();
+                for (var i = 0; i < liArr.length; i++) {
+                    var a=$(liArr[i]).children().eq(1).val();
+                    if(a==''||question==''){
+                        break;
+                    }
+                }
+                if(i<liArr.length){
+                    flag=false;
+                }
+                else{
+                    for (var m = 0; m < liArr.length; m++) {
+                        var x = $(liArr[m]).children().eq(1).val();
+                        obj.push(x);
+                    }
+                    arr.push({qid:qid,question:question,option:obj});
+                }
+
+                if(flag==false){
+                    alert('输入不能为空');
+                }
+                else {
+                    $.ajax({
+                        type:'post',
+                        url:'{:url("index/Question/addQuestion")}',
+                        data:{qid:qid,question:arr[0].question,option:arr[0].option},
+                        dataType:'text',
+                        success:function(res){
+                            console.log(res);
+                            if(res=='ok'){
+                                alert('编辑成功');
+                                window.location.reload();
+                            }
+                            else{
+                                alert('编辑失败');
+                            }
+                        },
+                        error:function(res){
+                            console.log(res);
+                        }
+                    })
+                }
+
+            },
+            delOption:function(x,showOid){
+                console.log(x,showOid);
+                var option= x.option;
+                var index=parseInt(showOid)-1;
+                option.splice(index,1);
+                var arr=[];
+                for(var i=0;i<option.length;i++){
+                    var str = String.fromCharCode(64 + i+1);
+                    arr.push({showOid:i+1,oid:option[i].oid,oname:option[i].oname,qid:option[i].qid,code:str});
+                }
+                var question={showId: x.showId,qid: x.qid,qname: x.qname,tid:x.tid,count:parseInt(x.count)-1,option: arr};
+                var showId=parseInt(x.showId)-1;
+                this.question.splice(showId,1,question);
+            },
+            complete:function(){
+                window.location.href='{:url("index/Index/main")}';
+                /*var questionArr=[];
+                for(var i=0;i<this.question.length;i++){
+                    var question=$('.title').eq(this.question[i].showId).children().eq(1).val();
+                    var liArr=$('.title').eq(this.question[i].showId).children().eq(5).children();
+                    var obj=[];
+                    for (var j = 0; j < liArr.length; j++) {
+                        var a=$(liArr[j]).children().eq(1).val();
+                        if(a==''||question==''){
+                            break;
+                        }
+                        else{
+                            obj.push(a);
+                        }
+                    }
+                    if(j<liArr.length){
+                        break;
+                    }
+                    else{
+                        questionArr.push({question:question,option:obj});
+                    }
+                }
+                if(i<this.question.length){
+                    alert('输入不能为空');
+                }
+                else{
+                    console.log(questionArr);
+                    $.ajax({
+                        type:'post',
+                        url:'index.php?type=questionnaire&a=saveQuestion',
+                        data:{tid:this.tid,question:questionArr},
+                        dataType:'text',
+                        success:function(res){
+                            console.log(res);
+                            if(res=='ok'){
+                                alert('编辑成功');
+                                window.location.href='index.php?type=login&a=main';
+                            }
+                        },
+                        error:function(res){
+                            console.log(res);
+                        }
+                    })
+                }*/
+            }
+        }
+    });
+</script>
+</html>

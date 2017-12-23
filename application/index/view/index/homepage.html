@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="__STATIC__/js/jquery-1.12.3.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    /* 小屏幕（平板，大于等于 768px） */
+    @media (min-width: 768px) {
+        .menu{
+            height: 68px;
+            line-height: 68px;
+        }
+        #footer{
+            height: 346px;
+        }
+        #minlogo{
+            display: none;
+        }
+    }
+    .hover:hover{
+        color: orange;
+    }
+    .normal{
+        border: 1px solid orange;
+        color: orange;
+    }
+    .normal:hover{
+        border: 1px solid orange;
+        color: white;
+        background-color: orange;
+    }
+</style>
+<body>
+<div class="nav navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNav" aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="row collapse navbar-collapse" id="myNav">
+            <div class="col-lg-2 col-md-2 col-sm-2 menu">
+                <img style="margin-top: 10px" class="img-responsive center-block" src="https://www.wjx.cn/images/newimg/index/logonew.png" alt="问卷星_不止问卷调查/在线考试" width="130" height="48">
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 menu text-center"></div>
+            <div class="col-lg-6 col-md-6 col-sm-6 menu text-center">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 menu text-center" style="color: orange;">首页</div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 menu text-center hover">应用展示</div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 menu text-center hover">企业版服务</div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 menu text-center hover">样本服务</div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 menu text-center hover">问卷调查模板</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 menu">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 menu text-center"><a href="{:url('index/Index/login')}" class="btn btn-default normal">登录</a></div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 menu text-center"><button type="button" class="btn btn-default normal">注册</button></div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 menu text-center"><button type="button" class="btn btn-warning" onclick="jumpWechat()">微信登录</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid img-responsive center-block" style="background-image: url(https://image.wjx.cn/images/newimg/index/banner.jpg); background-size:100% 100%;">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12" >
+            <h1 style="margin-top: 145px;color: #dbdbdb;" class="text-center">不止问卷调查 / 在线考试</h1>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12" >
+            <h3 class="text-center" style="color: #fff;"><span style="color:#ff9300;font-weight: bold;font-size:20px">1,871</span> 万用户已在问卷星上回收 <span style="color:#ff9300;font-weight: bold;font-size:20px">11.71</span> 亿份答卷</h3>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 text-center" style="margin-top:30px;margin-bottom: 270px">
+            <a class="btn btn-lg btn-warning">免费使用</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="top: 90px;margin-bottom: 90px;">
+            <img class="img-responsive center-block" src="https://image.wjx.cn/images/newimg/index/survey.png" alt="问卷调查，从问卷星开始">
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="top: 190px; opacity: 1;margin-bottom: 180px;">
+            <div class="h5">
+                在线问卷调查既复杂又简单，我们将诸多强大功能集成到系统中的，把最好的用户体验交给您。
+            </div>
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png"> 轻松导入问卷 </td>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">原始数据下载</td>
+                </tr>
+                <tr>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">多渠道分发问卷</td>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">自动生成图表</td>
+                </tr>
+                <tr>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">完美适配移动端</td>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">付费收集答卷</td>
+                </tr>
+            </table>
+            <a href="" class="btn btn-info btn-lg">问卷调查介绍</a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" style="background-color: #f5f8fa;margin-top: 90px;padding-bottom: 90px">
+    <div class="row">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 text-left" style="top: 190px; opacity: 1;margin-bottom: 180px;">
+                    <div class="h5">
+                        整合线下考试的场景和线上系统的优势，问卷星在线考试定会对您大有助益。
+                    </div>
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png"> 批量录入试题</td>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">题库随机抽题</td>
+                        </tr>
+                        <tr>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">考试时间控制</td>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">系统自动阅卷</td>
+                        </tr>
+                        <tr>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">自定义成绩单</td>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">成绩查询系统</td>
+                        </tr>
+                    </table>
+                    <a href="" class="btn btn-warning btn-lg">在线考试系统介绍</a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6" style="top: 90px;margin-bottom: 90px; opacity: 1;">
+                    <img class="img-responsive center-block" src="https://image.wjx.cn/images/newimg/index/test.png" alt="问卷调查，从问卷星开始">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="top: 90px;margin-bottom: 90px;">
+            <img class="img-responsive center-block" src="https://image.wjx.cn/images/newimg/index/360.png" alt="问卷调查，从问卷星开始">
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="top: 190px; opacity: 1;margin-bottom: 180px;">
+            <div class="h5">
+                360度评估操作简单、功能强大，能全方位、多维度评估员工，
+                挖掘员工发展潜力，帮助企业挑选和培养优秀人才。
+            </div>
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png"> 人员名单批量导入</td>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">一对多批量评估</td>
+                </tr>
+                <tr>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">维度/权重/部门设置</td>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">邮件/短信/密码邀请</td>
+                </tr>
+                <tr>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">多终端直接作答</td>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">个人/部门详细报告</td>
+                </tr>
+            </table>
+            <a href="" class="btn btn-info btn-lg">360度评估介绍</a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" style="background-color: #f5f8fa;margin-top: 90px;padding-bottom: 90px">
+    <div class="row">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 text-left" style="top: 190px; opacity: 1;margin-bottom: 180px;">
+                    <div class="h5">
+                        报名表单功能总是能让您的工作事半功倍。
+                    </div>
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png"> 活动报名</td>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">信息收集</td>
+                        </tr>
+                        <tr>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">微信签到</td>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">意见反馈表</td>
+                        </tr>
+                        <tr>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">用户信息表</td>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">数据标记查询</td>
+                        </tr>
+                    </table>
+                    <a href="" class="btn btn-warning btn-lg">报名表单介绍</a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6" style="top: 90px;margin-bottom: 90px; opacity: 1;">
+                    <img class="img-responsive center-block" src="https://image.wjx.cn/images/newimg/index/form.png" alt="问卷调查，从问卷星开始">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="top: 90px;margin-bottom: 90px;">
+            <img class="img-responsive center-block" src="https://image.wjx.cn/images/newimg/index/evaluation.png" alt="问卷调查，从问卷星开始">
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="top: 190px; opacity: 1; margin-bottom: 180px;">
+            <div class="h5">
+                在线测评为您提供了丰富的个性化测评设置空间，专业的功能
+                设置直观展现差异化的测评结果，从而搭建专属您的测评系统。
+            </div>
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png"> 多级维度设置</td>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">标准分差值对比</td>
+                </tr>
+                <tr>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">自定义测评结果</td>
+                    <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">可视化测评数据
+                    </td>
+                </tr>
+            </table>
+            <a href="" class="btn btn-info btn-lg">在线评测介绍</a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" style="background-color: #f5f8fa;margin-top: 90px;padding-bottom: 90px">
+    <div class="row">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 text-left" style="top: 190px; opacity: 1;margin-bottom: 180px;">
+                    <div class="h5">
+                        准备好素材，分分钟就可以拥有一个强大的在线投票平台。
+                    </div>
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png"> 文字投票</td>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">图片评选</td>
+                        </tr>
+                        <tr>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">视频竞选</td>
+                            <td><img style="margin-right: 10px" src="https://image.wjx.cn/images/newimg/index/tick_gray.png">防刷票设置</td>
+                        </tr>
+                    </table>
+                    <a href="" class="btn btn-warning btn-lg">在线投票介绍</a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6" style="top: 90px;margin-bottom: 90px; opacity: 1;">
+                    <img class="img-responsive center-block" src="https://image.wjx.cn/images/newimg/index/vote.png" alt="问卷调查，从问卷星开始">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="margin-top: 90px">他们正在使用</h2>
+        <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            问卷星付费客户覆盖超过2万家企业和国内90%的高校，是各行业领导品牌最为信赖的企业数据平台
+            <a href="">客户展示</a>
+        </p>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="showDiv">
+            <img style="display: block" class="img-responsive center-block" src="https://image.wjx.cn/images/newimg/index/college.png" alt="问卷星_不止问卷调查/在线考试">
+            <img style="display: none" class="img-responsive center-block" src="https://image.wjx.cn/images/newimg/index/internet.png" alt="问卷星_不止问卷调查/在线考试">
+            <img style="display: none" class="img-responsive center-block" src="https://image.wjx.cn/images/newimg/index/car.png" alt="问卷星_不止问卷调查/在线考试">
+            <img style="display: none" class="img-responsive center-block" src="https://image.wjx.cn/images/newimg/index/retail.png" alt="问卷星_不止问卷调查/在线考试">
+            <img style="display: none" class="img-responsive center-block" src="https://image.wjx.cn/images/newimg/index/consult.png" alt="问卷星_不止问卷调查/在线考试">
+            <img style="display: none" class="img-responsive center-block" src="https://image.wjx.cn/images/newimg/index/science.png" alt="问卷星_不止问卷调查/在线考试">
+            <img style="display: none" class="img-responsive center-block" src="https://image.wjx.cn/images/newimg/index/financial.png" alt="问卷星_不止问卷调查/在线考试">
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></h4>
+            <div id="btnDiv">
+                <h4 class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><img src="__STATIC__/image/blue1.png" style="width: 25px;height: 25px" alt="">高校</h4>
+                <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="__STATIC__/image/gray2.png" alt="">互联网</h4>
+                <h4 class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><img src="__STATIC__/image/gray3.png" style="width: 25px;height: 25px" alt="">汽车</h4>
+                <h4 class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><img src="__STATIC__/image/gray4.png" style="width: 25px;height: 25px" alt="">零售</h4>
+                <h4 class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><img src="__STATIC__/image/gray5.png" alt="">咨询</h4>
+                <h4 class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><img src="__STATIC__/image/gray6.png" alt="">科技</h4>
+                <h4 class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><img src="__STATIC__/image/gray7.png" alt="">金融</h4>
+            </div>
+            <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></h4>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="margin-top: 30px;margin-bottom: 90px">
+            <a class="btn btn-lg btn-info">了解企业版</a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" id="footer" style="background-color: #494b4c;color:#84878a;line-height: 30px">
+    <div class="row">
+        <div class="container">
+            <div class="row" style="margin-top: 90px;">
+                <div class="col-lg-1 col-md-1 col-sm-1" ></div>
+                <div class="col-lg-2  col-md-2 col-sm-2 text-left">
+                    <p><img class="img-responsive" src="https://www.wjx.cn/images/logo.png"></p>
+                    <p><img src="https://image.wjx.cn/images/newimg/index/phone.png">400-993-5858</p>
+                    <p><img src="https://image.wjx.cn/images/newimg/index/email.png">cs#wjx.cn</p>
+
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1" ></div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <h4>产品</h4>
+                    <p class="hover">企业版</p>
+                    <p class="hover">云考试</p>
+                    <p class="hover">定制版</p>
+                    <p class="hover">样本服务</p>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <h4>客户</h4>
+                    <p class="hover">客户展示</p>
+                    <p class="hover">最新问卷</p>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <h4>支持</h4>
+                    <p class="hover">客服中心</p>
+                    <p class="hover">帮助中心</p>
+                    <p class="hover">开放平台</p>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <h4>团队</h4>
+                    <p class="hover">关于我们</p>
+                    <p class="hover">加入我们 <img src="https://image.wjx.cn/images/newimg/index/star.png" alt=""></p>
+                    <p class="hover">产品动态</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="__STATIC__/js/MyPagination.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+    wx.config({
+
+        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+
+        appId: '', // 必填，公众号的唯一标识
+
+        timestamp:'' , // 必填，生成签名的时间戳
+
+        nonceStr: '', // 必填，生成签名的随机串
+
+        signature: '',// 必填，签名，见附录1
+
+        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+
+    });
+    wx.ready(function(){
+        // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+        wx.onMenuShareTimeline({
+            title: '朋友圈分享测试', // 分享标题
+            link: 'http://47.95.202.81/HF170615', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'https://image.wjx.cn/images/newimg/index/banner.jpg', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                //alert('用户点了分享按钮');
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+                //alert('用户取消了分享按钮');
+            }
+
+        });
+        wx.onMenuShareAppMessage({
+            title: '朋友分享测试', // 分享标题
+            desc: '问券星分享', // 分享描述
+            link: 'http://47.95.202.81/HF170615', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'https://image.wjx.cn/images/newimg/index/banner.jpg', // 分享图标
+            type: 'link', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareQQ({
+            title: 'QQ分享测试', // 分享标题
+            desc: '问卷星分享', // 分享描述
+            link: 'http://47.95.202.81/HF170615', // 分享链接
+            imgUrl: 'https://image.wjx.cn/images/newimg/index/banner.jpg', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareQZone({
+            title: 'QQ空间分享测试', // 分享标题
+            desc: '问卷星分享', // 分享描述
+            link: 'http://47.95.202.81/HF170615', // 分享链接
+            imgUrl: 'https://image.wjx.cn/images/newimg/index/banner.jpg', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    });
+    function jumpWechat(){
+        location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe66e7b51fb2799d1&redirect_uri=http://47.95.202.81/HF170615&response_type=code&scope=snsapi_userinfo&state=#wechat_redirect ';
+    }
+    var page=new MyPagination($('#btnDiv'),$('#showDiv'))
+</script>
+</html>

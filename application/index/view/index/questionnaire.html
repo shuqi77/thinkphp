@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>我的问卷星</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="__STATIC__/js/jquery-1.12.3.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    @media (max-width: 767px){
+        .menu{
+            background-color: #0078c8;
+            color: white;
+            font-size: 16px;
+        }
+    }
+    /* 小屏幕（平板，大于等于 768px） */
+    @media (min-width: 768px) {
+        .menu{
+            height: 58px;
+            line-height: 58px;
+            background-color: #0078c8;
+            color: white;
+            font-size: 16px;
+        }
+        .menu:hover{
+            color: #fff799;
+        }
+        #footer{
+            height: 346px;
+        }
+    }
+    .experience{
+        background-color: white;
+        color: deepskyblue;
+        border: 1px solid deepskyblue;
+        border-radius: 10px;
+        margin: 20px;
+    }
+    .experience:hover{
+        background-color: dodgerblue;
+        color: white;
+    }
+    .allTable{
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(51, 51, 51, 0.2);
+    }
+    .allTable:hover{
+        border: 2px solid rgba(48, 166, 245, 1);
+        box-shadow: 0 0 10px rgba(48, 166, 245, 1);
+    }
+</style>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-1 menu">
+            <img style="height: 34px;margin-top: 10px" class="img-responsive center-block" src="https://www.wjx.cn/Images/newimg/return.png">
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 menu text-center"><a class="menu" href="{:url('index/Index/select')}">返回</a></div>
+        <div class="col-lg-4 col-md-4 col-sm-4 menu text-center"></div>
+        <div class="col-lg-2 col-md-2 col-sm-2 menu text-center"><img src="https://www.wjx.cn/Images/newimg/questionnaire_20.png"> 我的问卷 <span style="margin-left: 10px">|</span></div>
+        <div class="col-lg-1 col-md-1 col-sm-1 menu text-center">
+            <img class="img-circle" src="https://www.wjx.cn/Images/newimg/user.png" style="width:40px;height: 40px;background-color: #2aabd2">
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 menu text-center">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {$uid}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">用户信息</a></li>
+                    <li><a href="#">升级</a></li>
+                    <li><a href="#">客服中心</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 menu text-center"><img src="https://www.wjx.cn/Images/newimg/news.png"> 消息</div>
+        <div class="col-lg-1 col-md-1 col-sm-1 menu text-center"><img src="https://www.wjx.cn/Images/newimg/exit1.png"> <span id="exits">退出</span></div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row" style="height: 80px;line-height:80px;color: #30a6f5;background-color: #ebeef5;margin-bottom: 50px">
+        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+        <div class="col-lg-11 col-md-11 col-sm-11 text-left">
+            <span class="h3">创建调查问卷</span>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+        <div class="col-lg-10 col-md-10 col-sm-10">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-2 col-md-2 col-sm-2 control-label h4 " style="color: #30a6f5;font-weight: bold;line-height: 0.5">调查名称：</label>
+                    <div class="col-lg-10 col-md-10 col-sm-10 text-center">
+                        <input type="text" class="form-control input-lg">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+    </div>
+    <div class="row text-center" style="margin: 20px">
+        <button id="create" type="button" class="btn btn-info btn-lg">立即创建</button>
+    </div>
+    <div class="row text-center" style="border-top: 1px solid #cccccc;margin-bottom: 50px;margin-top: 50px">
+        <em class="h4" style="color:#888888;position: relative;top: -11px;font-style: normal;padding: 0 6px;background-color: white;">或选择以下方式创建</em>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+            <div class="allTable">
+                <div class="media" style="margin-top: 30px;margin-bottom: 30px;margin-left: 10px;margin-right: 10px">
+                    <div class="media-left media-middle">
+                        <img class="media-object" src="https://www.wjx.cn/images/newimg/pic-3/template-blue.png">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">选择模板</h4>
+                        <p>使用问卷星提供的专业模板</p>
+                        <a href="index.php?type=login&a=questionnaire" type="button" class="btn btn-lg experience">创建</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+            <div class="allTable">
+                <div class="media" style="margin-top: 30px;margin-bottom: 30px;margin-left: 10px;margin-right: 10px">
+                    <div class="media-left">
+                        <img src="https://www.wjx.cn/images/newimg/pic-3/text-blue.png">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">导入文本</h4>
+                        <p>自由编辑文本自动生成问卷</p>
+                        <button type="button" class="btn btn-lg experience">创建</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 text-center ">
+            <div class="allTable">
+                <div class="media" style="margin-top: 30px;margin-bottom: 30px;margin-left: 10px;margin-right: 10px">
+                    <div class="media-left">
+                        <img src="https://www.wjx.cn/images/newimg/pic-3/service-blue.png">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">录入服务</h4>
+                        <p>人工协助录入问卷更便捷</p>
+                        <button type="button" class="btn btn-lg experience">创建</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $('#exits').click(function(){
+        if(confirm('确定要退出吗？')){
+            window.location.href='index.php?type=login&a=exits';
+        }
+    });
+    $('#create').click(function(){
+        var title=$('input[type="text"]').val();
+        if(title==''){
+            alert('问券名不能为空！');
+        }
+        else{
+            $.ajax({
+                type:'post',
+                url:'{:url("index/User/addTitle")}',
+                data:{title:title},
+                dataType:'text',
+                success:function(res){
+                    console.log(res);
+                    if(res!=0){
+                        window.location.href='{:url("index/Index/create")}';
+                    }
+                },
+                error:function(res){
+                    console.log(res);
+                }
+            })
+        }
+
+    });
+</script>
+</html>

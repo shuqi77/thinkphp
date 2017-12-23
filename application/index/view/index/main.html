@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>我的问卷星</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="__STATIC__/js/jquery-1.12.3.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    @media (max-width: 767px){
+        .menu{
+            background-color: #0078c8;
+            color: white;
+            font-size: 16px;
+        }
+    }
+    /* 小屏幕（平板，大于等于 768px） */
+    @media (min-width: 768px) {
+        .menu{
+            height: 58px;
+            line-height: 58px;
+            background-color: #0078c8;
+            color: white;
+            font-size: 16px;
+        }
+        .menu:hover{
+            color: #fff799;
+        }
+        #footer{
+            height: 346px;
+        }
+    }
+    .experience{
+        height: 30px;
+        background-color: white;
+        color: deepskyblue;
+        border: 1px solid deepskyblue;
+        border-radius: 10px;
+    }
+    .experience:hover{
+        background-color: dodgerblue;
+        color: white;
+    }
+    .div-hover:hover{
+        border: 2px solid rgba(48, 166, 245, 1);
+        box-shadow: 0 0 10px rgba(48, 166, 245, 1);
+    }
+</style>
+<body>
+<!--<div class="nav navbar-default">-->
+<div class="container-fluid">
+    <!-- <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNav" aria-expanded="false">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </button>
+     </div>
+     <div class="collapse navbar-collapse" id="myNav"></div>-->
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2 menu">
+            <img style="height: 34px;margin-top: 10px" class="img-responsive center-block" src="https://www.wjx.cn/images/newimg/index/mobieindexnew.png">
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 menu text-center"></div>
+        <div class="col-lg-2 col-md-2 col-sm-2 menu text-center"><img src="https://www.wjx.cn/Images/newimg/questionnaire_20.png"> 我的问卷 <span style="margin-left: 10px">|</span></div>
+        <div class="col-lg-1 col-md-1 col-sm-1 menu text-center">
+            <img class="img-circle" src="https://www.wjx.cn/Images/newimg/user.png" style="width:40px;height: 40px;background-color: #2aabd2">
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 menu text-center">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {$uid}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">用户信息</a></li>
+                    <li><a href="#">升级</a></li>
+                    <li><a href="#">客服中心</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 menu text-center"><img src="https://www.wjx.cn/Images/newimg/news.png"> 消息</div>
+        <div class="col-lg-1 col-md-1 col-sm-1 menu text-center"><img src="https://www.wjx.cn/Images/newimg/exit1.png"> <span id="exits">退出</span></div>
+    </div>
+</div>
+<!--</div>-->
+<div class="container" id="myBody">
+    <div class="row" style="margin-top: 50px">
+        <form action="">
+            <div class="col-lg-2 col-md-2 col-sm-2 text-center">
+                <a href="{:url('index/Index/select')}" class="btn btn-lg btn-warning" style="border-radius: 50px">+创建问券</a>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="col-lg-10 col-md-10 col-sm-10">
+                    <input type="text" name="keyWord" class="input-lg form-control" placeholder="请输入问卷名进行搜索" style="border-radius: 50px">
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 text-center">
+                    <!--<span class="glyphicon glyphicon-search"></span>-->
+                    <button type="submit" class="btn btn-lg btn-info">搜索</button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4"></div>
+        </form>
+    </div>
+    <div class="row" style="margin-top: 50px">
+        <div class="col-lg-11 col-md-11 col-sm-11">
+            <!--<wenjuanlist></wenjuanlist>
+            <pagebutton></pagebutton>-->
+            {foreach $wjList as  $value}
+                <div class="row table-bordered div-hover" style="border-radius: 10px;margin: 10px">
+                    <div class="row" style="margin-top: 20px;">
+                        <span class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center">{$value.tname}</span>
+                        <span class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center">ID:{$value.tid}</span>
+                        <span class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center">答卷：0 </span>
+                        <span class="col-lg-2 col-md-3 col-sm-3 col-xs-12 text-center">{$value.time}</span>
+                    </div>
+                    <div class="row" style="margin-top: 20px;margin-bottom: 20px; cursor: pointer">
+                        <span tname="{$value.tname}" onclick="setDetail()" class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center"><img src="https://www.wjx.cn/images/newimg/pic-1/design.png">设计问券</span>
+                        <span class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center"><img src="https://www.wjx.cn/images/newimg/pic-1/recovery.png">发布问券</span>
+                        <span class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center"><img src="https://www.wjx.cn/images/newimg/pic-1/download.png">分析&下载</span>
+                        <span onclick="delTitle({$value.tid})" class="col-lg-2 col-md-2 col-sm-2 col-xs-12 text-center"><img src="https://www.wjx.cn/images/newimg/pic-1/delete.png">删除</span>
+                    </div>
+                </div>
+            {/foreach}
+            {$page}
+            <!--<div class="row">
+                <span>共{{allRow}}条记录 当前是第{{page.nowPage}}/{{page.pageAll}}页</span>
+            </div>
+            <div class="row">
+                <input class="col-lg-1 col-md-1 col-sm-1 col-xs-3" style="background-color: cadetblue;color: white"  type="button" v-on:click="change(1)" page="1" value="首页">
+                <input class="col-lg-1 col-md-1 col-sm-1 col-xs-3" style="background-color: cadetblue;color: white" type="button" v-on:click="change(page.last)" value="上一页">
+                <input class="col-lg-1 col-md-1 col-sm-1 col-xs-3" style="background-color: cadetblue;color: white" type="button" v-on:click="change(page.next)" value="下一页">
+                <input class="col-lg-1 col-md-1 col-sm-1 col-xs-3" style="background-color: cadetblue;color: white" type="button" v-on:click="change(page.pageAll)" value="末页">
+            </div>-->
+        </div>
+        <!--<div class="col-lg-4 col-md-4 col-sm-4" v-if="flag===true"></div>
+        <div class="col-lg-4 col-md-4 col-sm-4" v-if="flag===true">
+            <img class="img-responsive center-block" src="https://www.wjx.cn/Images/newimg/pic-1/picture1.png">
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3" v-if="flag===true"></div>-->
+        <div class="col-lg-1 col-md-1 col-sm-1 text-center">
+            <div class="text-center" style="width: 62px;height: 62px;background-color: #1ea0fa;color: white;border-bottom: 1px solid white" >
+                <img style="padding-top: 5px" class="img-responsive center-block" src="https://www.wjx.cn/Images/newimg/pic-1/service1.png">
+                <span>客服中心</span>
+            </div>
+            <div class="text-center" style="width: 62px;height: 62px;background-color: #1ea0fa;color: white;border-bottom: 1px solid white" >
+                <img style="padding-top: 5px" class="img-responsive center-block" src="https://www.wjx.cn/Images/newimg/pic-1/WeChat1.png">
+                <span>微信绑定</span>
+            </div>
+            <div class="text-center" style="width: 62px;height: 62px;background-color: #1ea0fa;color: white;border-bottom: 1px solid white" >
+                <img style="padding-top: 5px" class="img-responsive center-block" src="https://www.wjx.cn/Images/newimg/pic-1/question1.png">
+                <span>帮助中心</span>
+            </div>
+            <div class="text-center" style="width: 62px;height: 62px;background-color: #1ea0fa;color: white;border-bottom: 1px solid white" >
+                <img style="padding-top: 5px" class="img-responsive center-block" src="https://www.wjx.cn/Images/newimg/pic-1/advice1.png">
+                <span>意见反馈</span>
+            </div>
+        </div>
+    </div>
+    <!--<div class="row" style="margin-top: 15px;margin-bottom: 15px" v-if="flag===true">
+        <div class="col-lg-4 col-md-4 col-sm-4"></div>
+        <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+            <h4>您目前还没有问卷，马上创建一份问卷吧！</h4>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4"></div>
+    </div>-->
+    <!--<div class="row" v-if="flag===true">
+        <div class="col-lg-4 col-md-4 col-sm-4"></div>
+        <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+            <a href="index.php?type=login&a=showCreate" class="btn btn-warning btn-lg" style="border-radius: 50px">+创建问券</a>
+            <button type="button" class="experience">体验问券功能</button>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4"></div>
+    </div>-->
+    <div class="row" style="margin-top: 50px">
+        <div class="col-lg-2 col-md-2 col-sm-2"></div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <table class="table table-bordered">
+                <tr>
+                    <td style="color: dodgerblue;font-size: 16px">人工录入问卷</td>
+                </tr>
+                <tr>
+                    <td>亲，如果准备好了文档，不想花时间创建问卷，您可以委托小星帮您快速录入，省时省心！</td></tr>
+                <tr  class="text-center">
+                    <td><button type="button" class="experience">我要协助</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <table class="table table-bordered">
+                <tr>
+                    <td style="color: dodgerblue;font-size: 16px">样本服务</td>
+                </tr>
+                <tr>
+                    <td>您是否苦恼缺乏理想的填写人群？小星拥有260万样本库活跃成员，高效、精准匹配您的需求！</td>
+                </tr>
+                <tr class=" text-center">
+                    <td><button type="button" class="experience">我想了解</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2"></div>
+    </div>
+</div>
+<div class="container-fluid" style="height:50px;background-color: #f7f8f9;line-height: 50px">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+            <span class="h4">问卷星</span><span style="margin-left: 10px;margin-right: 10px">|</span>不止问卷调查/在线考试
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    $('#exits').click(function(){
+        if(confirm('确定要退出吗？')){
+            window.location.href='{:url("index/Index/homePage")}';
+        }
+    });
+    function delTitle(tid){
+        if(confirm('确定要删除吗？')){
+            $.ajax({
+                type:'post',
+                url:'{:url("index/User/delTitle")}',
+                data:{tid:tid},
+                dataType:'text',
+                success:function(res){
+                    console.log(res);
+                    if(res!=0){
+                        alert('删除成功');
+                        window.location.reload();
+                    }
+                    else {
+                        alert('删除失败');
+                    }
+                },
+                error:function(res){
+                    console.log(res);
+                }
+            });
+        }
+    }
+    function setDetail(){
+        var tname=$(event.target).attr('tname');
+        $.ajax({
+            type:'post',
+            url:'{:url("index/Question/setDetail")}',
+            data:{tname:tname},
+            dataType:'text',
+            success:function(res){
+                console.log(res);
+                window.location.href='{:url("index/Index/create")}'
+            },
+            error:function(res){
+                console.log(res);
+            }
+        });
+    }
+    /*var vueObj=new Vue();
+    Vue.component('wenjuanlist',{
+        template:'<div>\
+                     <div class="row table-bordered div-hover" v-for="x in wjlist" style="border-radius: 10px;margin: 10px">\
+                            <div class="row" style="margin-top: 20px;">\
+                                <span class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center">{{x.tname}}</span>\
+                                <span class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center">ID:{{x.tid}}</span>\
+                                <span class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center">答卷：0 </span>\
+                                <span class="col-lg-2 col-md-3 col-sm-3 col-xs-12 text-center">{{x.time}}</span>\
+                            </div>\
+                            <div class="row" style="margin-top: 20px;margin-bottom: 20px; cursor: pointer">\
+                                <span v-on:click="setDetail(x.tname)" class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center"><img src="https://www.wjx.cn/images/newimg/pic-1/design.png">设计问券</span>\
+                                <span class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center"><img src="https://www.wjx.cn/images/newimg/pic-1/recovery.png">发布问券</span>\
+                                <span class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center"><img src="https://www.wjx.cn/images/newimg/pic-1/download.png">分析&下载</span>\
+                                <span v-on:click="delTitle(x.tid)" class="col-lg-2 col-md-2 col-sm-2 col-xs-12 text-center"><img src="https://www.wjx.cn/images/newimg/pic-1/delete.png">删除</span>\
+                            </div>\
+                    </div>\
+                 </div>',
+        data:function(){
+            return {
+                wjlist:[],
+                page:0,
+                allRow:0
+            }
+        },
+        created:function(){
+            /!*this.init(1);*!/
+            var _this=this;
+            vueObj.$on('turnPage',function(page){
+                if(page>_this.page.pageAll){
+                    alert('当前已经是最后一页了');
+                    page=_this.page.pageAll;
+                }
+                if(page<1){
+                    alert('当前已经是第一页了');
+                    page=1;
+                }
+                /!*_this.init(page);*!/
+            });
+        },
+        methods:{
+            /!*init:function(page){
+                var _this=this;
+                $.ajax({
+                    type:'post',
+                    url:'{:url("index/User/getTitle")}',
+                    data:{nowPage:page},
+                    dataType:'json',
+                    success:function(res){
+                        console.log(res);
+                        _this.wjlist=res[0];
+                        _this.page=res[1];
+                        _this.allRow=res[2];
+                        vueObj.$emit('pageButton', {page:res[1],allRow:res[2]});
+                    },
+                    error:function(res){
+                        console.log(res);
+                    }
+                });
+            },*!/
+            delTitle:function(tid){
+                if(confirm('确定要删除吗？')){
+                    $.ajax({
+                        type:'post',
+                        url:'{:url("index/User/delTitle")}',
+                        data:{tid:tid},
+                        dataType:'text',
+                        success:function(res){
+                            console.log(res);
+                            if(res!=0){
+                                alert('删除成功');
+                                window.location.reload();
+                            }
+                            else {
+                                alert('删除失败');
+                            }
+                        },
+                        error:function(res){
+                            console.log(res);
+                        }
+                    });
+                }
+            },
+            setDetail:function(tname){
+                $.ajax({
+                    type:'post',
+                    url:'{:url("index/Question/setDetail")}',
+                    data:{tname:tname},
+                    dataType:'text',
+                    success:function(res){
+                        console.log(res);
+                        window.location.href='{:url("index/Index/create")}'
+                    },
+                    error:function(res){
+                        console.log(res);
+                    }
+                });
+            }
+        }
+    });
+    Vue.component('pagebutton',{
+        template:'<div>\
+                    <div class="row">\
+                            <span>共{{allRow}}条记录 当前是第{{page.nowPage}}/{{page.pageAll}}页</span>\
+                    </div>\
+                    <div class="row">\
+                        <input class="col-lg-1 col-md-1 col-sm-1 col-xs-3" style="background-color: cadetblue;color: white"  type="button" v-on:click="change(1)" page="1" value="首页">\
+                        <input class="col-lg-1 col-md-1 col-sm-1 col-xs-3" style="background-color: cadetblue;color: white" type="button" v-on:click="change(page.last)" value="上一页">\
+                        <input class="col-lg-1 col-md-1 col-sm-1 col-xs-3" style="background-color: cadetblue;color: white" type="button" v-on:click="change(page.next)" value="下一页">\
+                        <input class="col-lg-1 col-md-1 col-sm-1 col-xs-3" style="background-color: cadetblue;color: white" type="button" v-on:click="change(page.pageAll)" value="末页">\
+                    </div>\
+                </div>',
+        data:function(){
+            return{
+                page:0,
+                allRow:0
+            }
+        },
+        created:function(){
+            var _this=this;
+            vueObj.$on('pageButton',function(x){
+                _this.page= x.page;
+                _this.allRow= x.allRow;
+            });
+        },
+        methods:{
+            change:function(page){
+                vueObj.$emit('turnPage', page)
+            }
+        }
+    });
+    var vue=new Vue({
+        el:'#myBody'
+    });*/
+</script>
+</html>

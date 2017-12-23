@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>我的问卷星</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="__STATIC__/js/jquery-1.12.3.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    @media (max-width: 767px){
+        .menu{
+            background-color: #0078c8;
+            color: white;
+            font-size: 16px;
+        }
+    }
+    /* 小屏幕（平板，大于等于 768px） */
+    @media (min-width: 768px) {
+        .menu{
+            height: 58px;
+            line-height: 58px;
+            background-color: #0078c8;
+            color: white;
+            font-size: 16px;
+        }
+        .menu:hover{
+            color: #fff799;
+        }
+        #footer{
+            height: 346px;
+        }
+    }
+    .experience{
+        background-color: white;
+        color: deepskyblue;
+        border: 1px solid deepskyblue;
+        border-radius: 10px;
+        margin: 20px;
+    }
+    .experience:hover{
+        background-color: dodgerblue;
+        color: white;
+    }
+    .allTable{
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(51, 51, 51, 0.2);
+    }
+    .allTable:hover{
+        border: 2px solid rgba(48, 166, 245, 1);
+        box-shadow: 0 0 10px rgba(48, 166, 245, 1);
+    }
+</style>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-1 menu">
+            <img style="height: 34px;margin-top: 10px" class="img-responsive center-block" src="https://www.wjx.cn/Images/newimg/return.png">
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 menu text-center"><a class="menu" href="{:url('index/Index/main')}">返回</a></div>
+        <div class="col-lg-4 col-md-4 col-sm-4 menu text-center"></div>
+        <div class="col-lg-2 col-md-2 col-sm-2 menu text-center"><img src="https://www.wjx.cn/Images/newimg/questionnaire_20.png"> 我的问卷 <span style="margin-left: 10px">|</span></div>
+        <div class="col-lg-1 col-md-1 col-sm-1 menu text-center">
+            <img class="img-circle" src="https://www.wjx.cn/Images/newimg/user.png" style="width:40px;height: 40px;background-color: #2aabd2">
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 menu text-center">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {$uid}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">用户信息</a></li>
+                    <li><a href="#">升级</a></li>
+                    <li><a href="#">客服中心</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 menu text-center"><img src="https://www.wjx.cn/Images/newimg/news.png"> 消息</div>
+        <div class="col-lg-1 col-md-1 col-sm-1 menu text-center"><img src="https://www.wjx.cn/Images/newimg/exit1.png"> <span id="exits">退出</span></div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row" style="height: 80px;line-height:80px;color: #30a6f5;background-color: #ebeef5;margin-bottom: 50px">
+        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+        <div class="col-lg-11 col-md-11 col-sm-11 text-left">
+            <span class="h3">选择创建问卷类型</span>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+        <div class="col-lg-10 col-md-10 col-sm-10">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                    <div class="allTable">
+                        <div class="media" style="margin: 30px;">
+                            <div class="media-left media-middle">
+                                <img class="media-object" src="https://www.wjx.cn/images/newimg/pic-2/survey-gray.png">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">问卷调查</h4>
+                                <p>丰富题型，强大逻辑</p>
+                                <p>问卷密码，红包抽奖</p>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #ddd"></div>
+                        <a href="{:url('index/Index/questionnaire')}" type="button" class="btn btn-lg experience">创建</a>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 text-center ">
+                    <div class="allTable">
+                        <div class="media" style="margin: 30px;">
+                            <div class="media-left">
+                                <img src="https://www.wjx.cn/images/newimg/pic-2/exam-gray.png">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">在线考试</h4>
+                                <p>题库抽题，限时作答</p>
+                                <p>成绩查询，自动阅卷</p>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #ddd"></div>
+                        <button type="button" class="btn btn-lg experience">创建</button>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 text-center ">
+                    <div class="allTable">
+                        <div class="media" style="margin: 30px;">
+                            <div class="media-left">
+                                <img src="https://www.wjx.cn/images/newimg/pic-2/vote-gray.png">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">在线投票</h4>
+                                <p>图文视频，选项随机</p>
+                                <p>实时排行，微信投票</p>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #ddd"></div>
+                        <button type="button" class="btn btn-lg experience">创建</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+        <div class="col-lg-10 col-md-10 col-sm-10">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                    <div class="allTable">
+                        <div class="media" style="margin: 30px;">
+                            <div class="media-left media-middle">
+                                <img class="media-object" src="https://www.wjx.cn/images/newimg/pic-2/apply-gray.png">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">报名表单</h4>
+                                <p>信息登记，微信签到</p>
+                                <p>活动报名，意见反馈</p>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #ddd"></div>
+                        <button class="btn btn-lg experience">创建</button>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 text-center ">
+                    <div class="allTable">
+                        <div class="media" style="margin: 30px;">
+                            <div class="media-left">
+                                <img src="https://www.wjx.cn/images/newimg/pic-2/360-gray.png">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">360度评估</h4>
+                                <p>批量评估，权重维度</p>
+                                <p>便捷发放，个人报告</p>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #ddd"></div>
+                        <button type="button" class="btn btn-lg experience">创建</button>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 text-center ">
+                    <div class="allTable">
+                        <div class="media" style="margin: 30px;">
+                            <div class="media-left">
+                                <img src="https://www.wjx.cn/images/newimg/pic-2/assessment-gray.png">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">在线测评</h4>
+                                <p>支持多级测评维度</p>
+                                <p>自动呈现测评报告</p>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #ddd"></div>
+                        <button type="button" class="btn btn-lg experience">创建</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+    </div>
+</div>
+</body>
+<script>
+    $('#exits').click(function(){
+        if(confirm('确定要退出吗？')){
+            window.location.href='index.php?type=login&a=exits';
+        }
+    });
+</script>
+</html>
